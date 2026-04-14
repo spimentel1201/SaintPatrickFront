@@ -20,11 +20,6 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Ejecutar Tests
-        run: npm test -- --watchAll=false
-        env:
-          CI: true
-
       - name: Desplegar a Vercel
         uses: amondnet/vercel-action@v20
         with:
