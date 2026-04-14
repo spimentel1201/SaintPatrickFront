@@ -1,0 +1,35 @@
+name: React CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v4
+
+    - name: Configurar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm' # Esto guarda en caché las dependencias para que las futuras ejecuciones sean mucho más rápidas
+
+    - name: Instalar dependencias
+      run: npm ci
+
+    - name: Ejecutar pruebas
+      # La variable CI=true es muy importante en React (especialmente si usas Create React App) 
+      # para evitar que los tests se queden en modo "watch" esperando interacción humana.
+      run: npm test
+      env:
+        CI: true
+
+    - name: Construir el proyecto (Build)
+      # Esto verifica que tu código React puede compilarse exitosamente en archivos estáticos listos para producción.
+      run: npm run build
