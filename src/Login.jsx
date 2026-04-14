@@ -8,7 +8,7 @@ const Login = () => {
   return (
     <div className="LoginBg d-flex justify-content-around align-items-center vh-100 px-5">
       <div className='fs-5'>
-         <b className='mx-4'>Te convocamos </b>
+         <b className='mx-4'>No te convocamos a realizar ninguna accion </b>
          <p className='mb-5 mx-4'>a pensar en grande</p>
         <b className='mt-5 mx-5'>Pensá en <br />BANCO SAINT PATRICK </b>
       </div>
